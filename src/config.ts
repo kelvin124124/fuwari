@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	lang: "en", // Language code, e.g. 'en', 'zh_CN', 'ja', etc.
 	themeColor: {
 		hue: 250, // Default hue for the theme color, from 0 to 360. e.g. red: 0, teal: 200, cyan: 250, pink: 345
-		fixed: false, // Hide the theme color picker for visitors
+		fixed: true, // Hide the theme color picker for visitors
 	},
 	banner: {
 		enable: false,
@@ -53,10 +53,15 @@ export const navBarConfig: NavBarConfig = {
 };
 
 export const profileConfig: ProfileConfig = {
-	avatar: "assets/images/demo-avatar.png", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
+	avatar: "assets/images/avatar.jpeg", // Relative to the /src directory. Relative to the /public directory if it starts with '/'
 	name: "Kelvin",
 	bio: "Just a med student who loves coding and sharing.",
 	links: [
+		{
+			name: "Email",
+			icon: "fa6-solid:envelope",
+			url: "mailto:blog@kelpcc.com",
+		},
 		{
 			name: "Discord",
 			icon: "fa6-brands:discord", // Visit https://icones.js.org/ for icon codes
