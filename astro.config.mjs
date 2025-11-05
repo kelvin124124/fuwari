@@ -159,21 +159,25 @@ export default defineConfig({
 	},
 
   vite: {
-      build: {
-          rollupOptions: {
-              onwarn(warning, warn) {
-                  // temporarily suppress this warning
-                  if (
-                      warning.message.includes("is dynamically imported by") &&
-                      warning.message.includes("but also statically imported by")
-                  ) {
-                      return;
-                  }
-                  warn(warning);
-              },
-          },
-      },
-	},
+    ssr: {
+        external: ['node:path', 'stream', 'util']
+    },
+    build: {
+        rollupOptions: {
+        onwarn(warning, warn) {
+            if (
+            warning.message.includes("is dynamically imported by") &&
+            warning.message.includes("but also statically imported by")
+            ) {
+            return;
+            }
+            warn(warning);
+        },
+        },
+    },
+  },
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    imageService: 'compile'
+  }),
 });

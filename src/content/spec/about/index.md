@@ -2,10 +2,11 @@
 This is my personal blog site.
   
 # Who am I?
-I'm a local med student at HKU ([the University of Hong Kong](https://www.hku.hk/)).  
+I'm a local med student at [HKU](https://www.hku.hk/).  
+
 Fan of old anime and video games. [Minecraft](https://www.minecraft.net/en-us) and [FFXIV](https://na.finalfantasyxiv.com/) are my favourites.  
   
-Loves coding (as a hobby).
+Loves coding (as a hobby).  
 
 | ![Minecraft](./mc-shader_waifu2x.png) | ![Final Fantasy XIV](./ffxiv-rising2023.jpg) |
 | :-------: | :-------: |
