@@ -8,12 +8,12 @@
 }
 
 @utility expand-animation {
-    @apply relative before:ease-out before:transition active:bg-none hover:before:bg-[var(--btn-plain-bg-hover)] active:before:bg-[var(--btn-plain-bg-active)] z-0
+    @apply relative before:ease-out before:transition before:pointer-events-none active:bg-none hover:before:bg-[var(--btn-plain-bg-hover)] active:before:bg-[var(--btn-plain-bg-active)] z-0
     before:absolute before:rounded-[inherit] before:inset-0 before:scale-[0.85] hover:before:scale-100 before:-z-10;
 }
 
 @utility link {
-    @apply transition rounded-md p-1 -m-1 expand-animation;
+    @apply transition rounded-md expand-animation before:-inset-1 before:scale-[0.7] hover:before:scale-100;
 }
 
 @utility btn-regular-dark {
@@ -33,7 +33,7 @@
         @apply drop-shadow-[0_2px_4px_rgba(0,0,0,0.005)]
     }
     .link-lg {
-        @apply transition rounded-md p-1.5 -m-1.5 expand-animation;
+        @apply transition rounded-md expand-animation before:-inset-1.5 before:scale-[0.7] hover:before:scale-100;
     }
     .float-panel {
         @apply top-[5.25rem] rounded-[var(--radius-large)] overflow-hidden bg-[var(--float-panel-bg)] transition shadow-xl dark:shadow-none
