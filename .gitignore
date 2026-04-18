@@ -33,3 +33,7 @@ yarn.lock
 
 # wrangler
 .wrangler/
+
+# llm
+AGENTS.md
+CLAUDE.md

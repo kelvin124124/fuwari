@@ -26,6 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 import cloudflare from "@astrojs/cloudflare";
 
+const isDev = process.argv.includes("dev");
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://fuwari.vercel.app/",
@@ -156,9 +158,6 @@ export default defineConfig({
 
   vite: {
     plugins: [tailwindcss()],
-    ssr: {
-        external: ['node:path', 'stream', 'util']
-    },
     build: {
         rollupOptions: {
         onwarn(warning, warn) {
@@ -174,9 +173,11 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare({
-    imageService: 'compile'
-  }),
+  adapter: isDev
+    ? undefined
+    : cloudflare({
+        imageService: 'compile'
+      }),
 
   image: {
     responsiveStyles: true,
