@@ -7,6 +7,9 @@
     "binding": "ASSETS",
     "directory": "./dist"
   },
+  "kv_namespaces": [
+    { "binding": "SESSION", "id": "95f9cff8bf4a428f9eea3a803d898cb9" }
+  ],
   "routes": [
     {
       "pattern": "blog.kelpcc.com",
