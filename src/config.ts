@@ -69,7 +69,7 @@ export const profileConfig: ProfileConfig = {
 			// `pnpm add @iconify-json/<icon-set-name>`
 			url: "https://discord.com/users/778981397729509387",
 		},
-		{	
+		{
 			name: "Steam",
 			icon: "fa6-brands:steam",
 			url: "https://steamcommunity.com/profiles/76561198355238595",

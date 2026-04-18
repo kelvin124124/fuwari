@@ -5,21 +5,12 @@ import I18nKey from "../i18n/i18nKey";
 import { i18n } from "../i18n/translation";
 import { getPostUrlBySlug } from "../utils/url-utils";
 
-export let tags: string[];
-export let categories: string[];
-export let sortedPosts: Post[] = [];
-
-const params = new URLSearchParams(window.location.search);
-tags = params.has("tag") ? params.getAll("tag") : [];
-categories = params.has("category") ? params.getAll("category") : [];
-const uncategorized = params.get("uncategorized");
-
 interface Post {
 	slug: string;
 	data: {
 		title: string;
 		tags: string[];
-		category?: string;
+		category?: string | null;
 		published: Date;
 	};
 }
@@ -29,7 +20,14 @@ interface Group {
 	posts: Post[];
 }
 
-let groups: Group[] = [];
+const { sortedPosts = [] }: { sortedPosts?: Post[] } = $props();
+
+const params = new URLSearchParams(window.location.search);
+const tags = params.has("tag") ? params.getAll("tag") : [];
+const categories = params.has("category") ? params.getAll("category") : [];
+const uncategorized = params.get("uncategorized");
+
+let groups: Group[] = $state([]);
 
 function formatDate(date: Date) {
 	const month = (date.getMonth() + 1).toString().padStart(2, "0");
@@ -86,7 +84,7 @@ onMount(async () => {
 </script>
 
 <div class="card-base px-8 py-6">
-    {#each groups as group}
+    {#each groups as group (group.year)}
         <div>
             <div class="flex flex-row w-full items-center h-[3.75rem]">
                 <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">
@@ -103,7 +101,7 @@ onMount(async () => {
                 </div>
             </div>
 
-            {#each group.posts as post}
+            {#each group.posts as post (post.slug)}
                 <a
                         href={getPostUrlBySlug(post.slug)}
                         aria-label={post.data.title}

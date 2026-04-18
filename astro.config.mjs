@@ -1,12 +1,12 @@
 import sitemap from "@astrojs/sitemap";
 import svelte from "@astrojs/svelte";
-import tailwind from "@astrojs/tailwind";
+import tailwindcss from "@tailwindcss/vite";
 import { pluginCollapsibleSections } from "@expressive-code/plugin-collapsible-sections";
 import { pluginLineNumbers } from "@expressive-code/plugin-line-numbers";
 import swup from "@swup/astro";
 import expressiveCode from "astro-expressive-code";
 import icon from "astro-icon";
-import { defineConfig } from "astro/config";
+import { defineConfig, fontProviders } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components";/* Render the custom directive content */
 import rehypeKatex from "rehype-katex";
@@ -26,6 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 import cloudflare from "@astrojs/cloudflare";
 
+const isDev = process.argv.includes("dev");
+
 // https://astro.build/config
 export default defineConfig({
   site: "https://fuwari.vercel.app/",
@@ -33,9 +35,6 @@ export default defineConfig({
   trailingSlash: "always",
 
   integrations: [
-      tailwind({
-          nesting: true,
-      }),
       swup({
           theme: false,
           animationClass: "transition-swup-", // see https://swup.js.org/options/#animationselector
@@ -52,7 +51,6 @@ export default defineConfig({
       }),
       icon({
           include: {
-              "preprocess: vitePreprocess(),": ["*"],
               "fa6-brands": ["*"],
               "fa6-regular": ["*"],
               "fa6-solid": ["*"],
@@ -79,7 +77,7 @@ export default defineConfig({
               borderRadius: "0.75rem",
               borderColor: "none",
               codeFontSize: "0.875rem",
-              codeFontFamily: "'JetBrains Mono Variable', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+              codeFontFamily: "var(--font-mono)",
               codeLineHeight: "1.5rem",
               frames: {
                   editorBackground: "var(--codeblock-bg)",
@@ -159,9 +157,7 @@ export default defineConfig({
 	},
 
   vite: {
-    ssr: {
-        external: ['node:path', 'stream', 'util']
-    },
+    plugins: [tailwindcss()],
     build: {
         rollupOptions: {
         onwarn(warning, warn) {
@@ -177,7 +173,50 @@ export default defineConfig({
     },
   },
 
-  adapter: cloudflare({
-    imageService: 'compile'
-  }),
+  adapter: isDev
+    ? undefined
+    : cloudflare({
+        imageService: 'compile'
+      }),
+
+  image: {
+    responsiveStyles: true,
+  },
+
+  fonts: [
+    {
+      provider: fontProviders.google(),
+      name: "Roboto",
+      cssVariable: "--font-roboto",
+      weights: [400, 500, 700],
+      styles: ["normal"],
+      subsets: ["latin", "latin-ext"],
+      fallbacks: [
+        "ui-sans-serif",
+        "system-ui",
+        "-apple-system",
+        "BlinkMacSystemFont",
+        "Segoe UI",
+        "sans-serif",
+      ],
+    },
+    {
+      provider: fontProviders.google(),
+      name: "JetBrains Mono",
+      cssVariable: "--font-jetbrains-mono",
+      weights: ["400 700"],
+      styles: ["normal", "italic"],
+      subsets: ["latin", "latin-ext"],
+      fallbacks: [
+        "ui-monospace",
+        "SFMono-Regular",
+        "Menlo",
+        "Monaco",
+        "Consolas",
+        "Liberation Mono",
+        "Courier New",
+        "monospace",
+      ],
+    },
+  ],
 });
