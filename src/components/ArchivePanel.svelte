@@ -84,7 +84,7 @@ onMount(async () => {
 </script>
 
 <div class="card-base px-8 py-6">
-    {#each groups as group}
+    {#each groups as group (group.year)}
         <div>
             <div class="flex flex-row w-full items-center h-[3.75rem]">
                 <div class="w-[15%] md:w-[10%] transition text-2xl font-bold text-right text-75">
@@ -101,7 +101,7 @@ onMount(async () => {
                 </div>
             </div>
 
-            {#each group.posts as post}
+            {#each group.posts as post (post.slug)}
                 <a
                         href={getPostUrlBySlug(post.slug)}
                         aria-label={post.data.title}
