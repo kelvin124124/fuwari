@@ -9,11 +9,9 @@ import icon from "astro-icon";
 import { defineConfig, fontProviders } from "astro/config";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeComponents from "rehype-components";/* Render the custom directive content */
-import rehypeKatex from "rehype-katex";
 import rehypeSlug from "rehype-slug";
 import remarkDirective from "remark-directive";/* Handle directives */
 import remarkGithubAdmonitionsToDirectives from "remark-github-admonitions-to-directives";
-import remarkMath from "remark-math";
 import remarkSectionize from "remark-sectionize";
 import { expressiveCodeConfig } from "./src/config.ts";
 import { pluginLanguageBadge } from "./src/plugins/expressive-code/language-badge.ts";
@@ -106,7 +104,6 @@ export default defineConfig({
 
   markdown: {
       remarkPlugins: [
-          remarkMath,
           remarkReadingTime,
           remarkExcerpt,
           remarkGithubAdmonitionsToDirectives,
@@ -115,7 +112,6 @@ export default defineConfig({
           parseDirectiveNode,
       ],
       rehypePlugins: [
-          rehypeKatex,
           rehypeSlug,
           [
               rehypeComponents,

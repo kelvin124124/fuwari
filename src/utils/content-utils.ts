@@ -90,10 +90,7 @@ export async function getCategoryList(): Promise<Category[]> {
 			return;
 		}
 
-		const categoryName =
-			typeof post.data.category === "string"
-				? post.data.category.trim()
-				: String(post.data.category).trim();
+		const categoryName = post.data.category.trim();
 
 		count[categoryName] = count[categoryName] ? count[categoryName] + 1 : 1;
 	});

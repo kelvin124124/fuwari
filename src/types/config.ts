@@ -4,17 +4,7 @@ export type SiteConfig = {
 	title: string;
 	subtitle: string;
 
-	lang:
-		| "en"
-		| "zh_CN"
-		| "zh_TW"
-		| "ja"
-		| "ko"
-		| "es"
-		| "th"
-		| "vi"
-		| "tr"
-		| "id";
+	lang: string;
 
 	themeColor: {
 		hue: number;
@@ -34,14 +24,6 @@ export type SiteConfig = {
 		enable: boolean;
 		depth: 1 | 2 | 3;
 	};
-
-	favicon: Favicon[];
-};
-
-export type Favicon = {
-	src: string;
-	theme?: "light" | "dark";
-	sizes?: string;
 };
 
 export enum LinkPreset {
