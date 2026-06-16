@@ -30,7 +30,7 @@ const isDev = process.argv.includes("dev");
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://fuwari.vercel.app/",
+  site: "https://blog.kelpcc.com/",
   base: "/",
   trailingSlash: "always",
 
