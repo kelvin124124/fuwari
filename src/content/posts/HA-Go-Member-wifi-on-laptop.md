@@ -11,24 +11,17 @@ draft: false
 唯只限於已安裝 [HA Go 應用程式](https://www2.ha.org.hk/hago/about-ha-go/ha-go/what-is-ha-go) 的流動裝置使用，iPad 和手提電腦不能安裝 HA Go，所以原則上不能使用。本教學旨在提供一個讓其他裝置也能使用此 WiFi 的辦法。
 
 ### 前置要求
-- 已註冊成為 HA Go 正式會員
-- 一部已登入 HA Go 應用程式的 iOS 流動裝置
+- 只適用於iOS裝置
 
 ### 步驟
-#### 1. 在已登入 HA Go 應用程式的流動裝置上嘗試啟動 WiFi
-HA Go 會在瀏覽器中下載名為 `hago_wifi_config.mobileconfig` 的 WiFi 設定檔。  
-你可以在 Downloads 資料夾中找到它。
+#### 1. 在iOS裝置上下載描述檔
+下載名為 `hago_wifi_config.mobileconfig` 的 [WiFi 設定檔](https://hago-corp-resources-prd.hago.ha.org.hk/hagowifi-web/wifiwebEng.html)。  
 
-#### 2. 將 WiFi 設定檔傳送到手提電腦上
-![Screenshot - Wifi Config Downloaded On Macbook](../../assets/images/HA-Go-Member-wifi-on-laptop/Screenshot-WifiConfigOnMacbook.png)
+#### 2. 在裝置上安裝設定檔
+詳見其他安裝設定檔教程。
 
-#### 3. 在手提電腦上安裝設定檔
-MacBook 可以直接安裝。詳見其他安裝設定檔教程。
-
-如果使用 Windows，可以嘗試強行使用 Text Editor 開啟檔案。  
-從中找到 WiFi 的 1. SSID， 2. Security Type， 3. Password，再以此登入網絡。
+#### 3. 在裝置上連線WiFi
+此時應該不會再提示輸入密碼，可以直接連WiFi。
 
 ### 風險提示
-WiFi 設定檔可能含有敏感個人資料，外洩可能會導致嚴重後果。  
-以此方法登入 WiFi 有可能違反 HA Go Member WiFi 使用條款。  
 本文只供教學用途，筆者並不鼓勵任何有可能違反 HA Go Member WiFi 使用條款的行為。
